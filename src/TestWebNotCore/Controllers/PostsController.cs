@@ -6,6 +6,7 @@ using TestWebNotCore.Models;
 
 namespace TestWebNotCore.Controllers
 {
+    [Authorize]
     public class PostsController : Controller
     {
         private readonly ApplicationDbContext m_db = new ApplicationDbContext();
