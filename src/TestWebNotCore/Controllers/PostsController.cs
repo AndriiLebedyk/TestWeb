@@ -38,6 +38,7 @@ namespace TestWebNotCore.Controllers
         {
             Post post = m_db.Posts.Find(id);
             m_db.Posts.Remove(post);
+            m_db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
     }
