@@ -1,0 +1,43 @@
+﻿@model Post
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </dt>
+        <dd>
+            @Html.Raw(Model.AuthorName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.Raw(Model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.Raw(Model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+        <dd>
+            @Html.Raw(Model.Body)
+        </dd>
+    </dl>
+</div>
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" />
+    </form> |
+    <a asp-action="Index">Back to List</a>
+</div>
