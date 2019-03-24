@@ -10,7 +10,10 @@ namespace TestWebNotCore.Controllers
     {
         private readonly ApplicationDbContext m_db = new ApplicationDbContext();
 
-        public ActionResult Index() => View(m_db.Posts.ToList());
+        public ActionResult Index() {
+            var lastMonth = DateTime.Now.AddMonths(-1);
+            return View(m_db.Posts.Where(x => x.Date >= lastMonth).ToList());
+        }
 
         public ActionResult Details(int? id)
         {
