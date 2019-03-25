@@ -1,6 +1,7 @@
 # TestWeb
 
 ## Problems
+I'm working with TestWebNotCore project
 ### Tasks
 - Add comments functionality to the post on post’s details view (create/delete is enough). 
 - Split post's AuthorName (Post.AuthorName) field into Name (Post.Name) and Domain (Post.Domain) with respect to existed data consistency in DB. 
