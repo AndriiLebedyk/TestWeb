@@ -196,7 +196,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711161351083_InitialCreate.cs" />
+    <Compile Include="Migrations\201711161351083_InitialCreate.Designer.cs">
+      <DependentUpon>201711161351083_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903291824008_CommentMigration.cs" />
+    <Compile Include="Migrations\201903291824008_CommentMigration.Designer.cs">
+      <DependentUpon>201903291824008_CommentMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Post.cs" />
@@ -204,6 +214,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-TestWebNotCore-20171116032609.mdf" />
+    <Content Include="App_Data\aspnet-TestWebNotCore-20171116032609_log.ldf">
+      <DependentUpon>aspnet-TestWebNotCore-20171116032609.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -258,9 +272,7 @@
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
@@ -273,6 +285,14 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711161351083_InitialCreate.resx">
+      <DependentUpon>201711161351083_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903291824008_CommentMigration.resx">
+      <DependentUpon>201903291824008_CommentMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
