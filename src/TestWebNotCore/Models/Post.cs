@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace TestWebNotCore.Models
@@ -12,5 +13,10 @@ namespace TestWebNotCore.Models
         public string Body { get; set; }
         public string AuthorName { get; set; }
         public DateTime Date { get; set; }
+        public List<Comment> PostComments { get; set; }
+        public Post()
+        {
+            PostComments = new List<Comment>();
+        }
     }
 }

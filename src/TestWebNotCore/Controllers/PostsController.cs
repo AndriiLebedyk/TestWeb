@@ -25,6 +25,7 @@ namespace TestWebNotCore.Controllers
             {
                 if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
+                var comments = m_db.Comments.Where(x => x.PostId == id).ToList();
                 Post post = m_db.Posts.Find(id);
                 return post == null ? (ActionResult)HttpNotFound() : View(post);
             }
@@ -52,8 +53,39 @@ namespace TestWebNotCore.Controllers
             {
                 Post post = m_db.Posts.Find(id);
                 m_db.Posts.Remove(post);
-                m_db.SaveChangesAsync();
+                m_db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(string commentText, int postId)
+        {
+            using(var m_db = new ApplicationDbContext())
+            {
+                var comment = new Comment
+                {
+                    Author = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf('@')),
+                    Text = commentText,
+                    Post = m_db.Posts.Find(postId),
+                    PostId = postId
+                };
+                m_db.Comments.Add(comment);
+                m_db.SaveChanges();
+            }
+            return RedirectToAction("Details", new { id = postId });
+        }
+
+        [HttpPost]
+        public ActionResult DeleteComment(int id)
+        {
+            using(var m_db = new ApplicationDbContext())
+            {
+                var comment = m_db.Comments.Find(id);
+                var postId = comment.PostId;
+                m_db.Comments.Remove(comment);
+                m_db.SaveChanges();
+                return RedirectToAction("Details", new { id = postId });
             }
         }
     }

@@ -45,3 +45,31 @@
         </div>
     }
 </p>
+<hr />
+<div>
+    <table>
+        @foreach(var item in Model.PostComments)
+        {
+        <tr>
+            <td>
+                <b>@Html.DisplayFor(itemModel => item.Author):</b>
+            </td>
+            <td>
+                @Html.DisplayFor(itemModel => item.Text)
+            </td>
+            <td>
+                @using(Html.BeginForm("DeleteComment", "Posts", new { id = item.Id }))
+                {
+                    <input type="submit" value="Delete" class="btn btn-default"/>
+                }
+            </td>
+        </tr>
+        }
+    </table>
+    <br />
+    @using(Html.BeginForm("AddComment", "Posts", new { postId = Model.Id}))
+    {
+        @Html.TextArea("commentText")
+        <input type="submit" value="Add Comment" class="btn btn-default" />
+    }
+</div>
