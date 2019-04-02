@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using TestWebNotCore.Models;
+using System.Data.Entity;
 
 namespace TestWebNotCore.Controllers
 {
@@ -26,8 +27,8 @@ namespace TestWebNotCore.Controllers
             {
                 if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-                var comments = m_db.Comments.Where(x => x.PostId == id).ToList();
-                Post post = m_db.Posts.Find(id);
+                var posts = m_db.Posts.Include(x => x.PostComments).ToList();
+                Post post = posts.Find(x => x.Id == id);
                 return post == null ? (ActionResult)HttpNotFound() : View(post);
             }
         }
