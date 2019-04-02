@@ -11,6 +11,7 @@ namespace TestWebNotCore.Controllers
     {
         private readonly ApplicationDbContext m_db = new ApplicationDbContext();
 
+        [AllowAnonymous]
         public ActionResult Index() {
             using(var m_db = new ApplicationDbContext())
             {
